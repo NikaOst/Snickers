@@ -6,21 +6,21 @@ import insta from '../../assets/icons/insta.svg';
 function Footer() {
   return (
     <div className={styles.mainContainer}>
-      <div>
+      <div className={styles.links}>
         <span>Контакты</span>
-        <div>
+        <div className={styles.socialMedia}>
           <img src={facebook} alt="facebookSvg" />
           <img src={twitter} alt="twitterSvg" />
           <img src={insta} alt="instaSvg" />
         </div>
-        <div>
-          <span>8 800 000 00 00</span>
-          <span>emailexample@email.com</span>
-        </div>
-        <div>
-          <span>2024 Сникер-магазин. Все права защищены</span>
-          <input type="text" placeholder="Введите свой email:" />
-        </div>
+      </div>
+      <div className={styles.contacts}>
+        <span>8 800 000 00 00</span>
+        <span>emailexample@email.com</span>
+      </div>
+      <div className={styles.contactWithUs}>
+        <span>2024 Сникер-магазин. Все права защищены</span>
+        <input type="text" placeholder="Введите свой email:" />
       </div>
     </div>
   );
