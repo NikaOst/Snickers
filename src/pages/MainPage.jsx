@@ -1,6 +1,3 @@
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Card from '@mui/material/Card';
 import boots from '../assets/images/boots.png';
