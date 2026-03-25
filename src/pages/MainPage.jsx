@@ -3,8 +3,17 @@ import Card from '@mui/material/Card';
 import boots from '../assets/images/boots.png';
 import addProductIcon from '../assets/icons/btnaddToCart.svg';
 import banner from '../assets/images/Banner.png';
+import { useEffect } from 'react';
+import { useContext } from 'react';
+import ProductsContext from '../context';
 
 function MainPage() {
+  const { fetchProducts, products } = useContext(ProductsContext);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
+
   return (
     <div style={{ width: '80%', margin: '0 auto' }}>
       <div
@@ -12,10 +21,9 @@ function MainPage() {
           margin: '28px auto',
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center',
           marginBottom: '72px',
         }}>
-        <img style={{ width: '100%' }} src={banner} alt="bootsBannerPng" />
+        <img style={{ width: '82vw' }} src={banner} alt="bootsBannerPng" />
       </div>
       <div>
         <div>
@@ -24,10 +32,56 @@ function MainPage() {
           <div
             style={{
               display: 'flex',
-              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '24px',
               marginBottom: '172px',
             }}>
-            <Card
+            {products.map((prod) => {
+              return (
+                <Card
+                  key={prod.id}
+                  style={{
+                    maxWidth: '386px',
+                    borderRadius: '42px',
+                    padding: '30px 30px',
+                  }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      marginBottom: '42px',
+                    }}>
+                    <img
+                      style={{ width: '278px', height: 'auto' }}
+                      src={prod.image}
+                      alt="bootsImg"
+                    />
+                    <p style={{ fontSize: '24px', fontWeight: 400 }}>{prod.name}</p>
+                  </div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        marginBottom: '20px',
+                      }}>
+                      <span style={{ fontSize: '14px', color: '#666666' }}>Цена:</span>
+                      <span style={{ fontSize: '24px', fontWeight: 700 }}>{prod.price}$</span>
+                    </div>
+                    <div>
+                      <img src={addProductIcon} alt="addProdIcon" />
+                    </div>
+                  </div>
+                </Card>
+              );
+            })}
+            {/* <Card
               style={{
                 maxWidth: '386px',
                 borderRadius: '42px',
@@ -60,7 +114,7 @@ function MainPage() {
                   <img src={addProductIcon} alt="addProdIcon" />
                 </div>
               </div>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </div>

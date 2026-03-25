@@ -1,7 +1,7 @@
 .mainContainer {
-  padding: 43px 0;
   background-color: #3b3c3d;
   color: #ffffff;
+  padding: 43px 0;
 }
 
 .navContent {
@@ -9,7 +9,6 @@
   width: 80%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .links {
