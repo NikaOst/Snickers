@@ -1,0 +1,31 @@
+.mainContainer {
+  padding: 43px 250px;
+  background-color: #3b3c3d;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.links {
+  display: flex;
+  gap: 64px;
+}
+
+.marketName {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.links span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.activeLink span {
+  opacity: 100%;
+}
+
+.inactiveLink span {
+  opacity: 50%;
+}
