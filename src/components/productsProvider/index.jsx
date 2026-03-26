@@ -19,12 +19,40 @@ function ProductsProvider({ children }) {
   };
 
   // api /cardData
-  const addToCard = () => {};
-  const deleteFromCard = () => {};
-  const fetchCardData = () => {};
+  const addToCard = async (data) => {
+    try {
+      const product = {
+        productId: data.id,
+        name: data.name,
+        price: data.price,
+        image: data.image,
+      };
+      const response = await axios.post(`${BASE_URL}/cardData`, product);
+      setCardData((prev) => [...prev, response.data]);
+    } catch (error) {
+      console.error('Failed to post product:', error);
+    }
+  };
+  const deleteFromCard = async (id) => {
+    try {
+      await axios.delete(`${BASE_URL}/cardData/${id}`);
+      setCardData((prev) => prev.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error('Failed to delete product:', error);
+    }
+  };
+  const fetchCardData = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/cardData`);
+      setCardData(response.data);
+    } catch (error) {
+      console.error('Failed to fetch products:', error);
+    }
+  };
 
   return (
-    <ProductsContext.Provider value={{ products, fetchProducts }}>
+    <ProductsContext.Provider
+      value={{ products, cardData, fetchProducts, addToCard, fetchCardData, deleteFromCard }}>
       {children}
     </ProductsContext.Provider>
   );
