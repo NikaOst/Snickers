@@ -1,0 +1,102 @@
+.card-main-container {
+  width: 80%;
+  margin: 50px auto;
+}
+
+div > h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 37px;
+}
+
+.card-content-box {
+  display: flex;
+  gap: 140px;
+  justify-content: space-between;
+  margin-bottom: 172px;
+}
+
+.card-box {
+  display: flex;
+  flex-direction: column;
+  gap: 67px;
+}
+
+.product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 22px 23px;
+  background-color: #fafafa;
+}
+.prod-img,
+.divider {
+  margin-right: 36px;
+}
+
+.prod-img {
+  width: 100px;
+  height: auto;
+}
+.prod-name {
+  width: 100%;
+  max-width: 270px;
+  font-size: 19px;
+  font-weight: 400;
+}
+.price-box {
+  display: flex;
+  flex-direction: column;
+  margin-right: 100px;
+}
+
+.price-box span:first-child,
+.total-sum-box span:first-child {
+  font-size: 14px;
+}
+
+.price-box span:last-child,
+.total-sum-box span:last-child {
+  font-size: 19px;
+  font-weight: 700;
+}
+.delete-btn-box {
+  width: 56px;
+  height: 56px;
+  background-color: #f3f3f3;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.delete-btn {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+.total-card {
+  width: 100%;
+  max-width: 350px;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px;
+  background-color: #fafafa;
+  justify-content: space-between;
+}
+.total-products {
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+  margin-bottom: 64px;
+}
+.total-products span {
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 98%;
+}
+.total-sum-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
