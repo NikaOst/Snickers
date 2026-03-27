@@ -43,6 +43,7 @@ function MainPage() {
               );
               return (
                 <Card
+                  variant={isNotAvalible ? 'outlined' : 'elevation'}
                   key={prod.id}
                   style={{
                     maxWidth: '386px',
