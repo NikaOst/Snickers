@@ -6,6 +6,49 @@ import facebook_color from '../assets/icons/facebook_color.svg';
 import { useForm } from 'react-hook-form';
 
 function ContactsPage() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: 'onSubmit',
+  });
+
+  const postMessage = async (data) => {
+    try {
+      const userMessage = {
+        login: data.username,
+        email: data.email,
+        message: data.text,
+      };
+      console.log(userMessage);
+      reset();
+    } catch (error) {
+      console.log('Error: POST message');
+    }
+  };
+
+  const loginValidation = (login) => {
+    let message = true;
+    if (!login) message = 'Поле не должно быть пустым';
+    if (login.length < 4 || login.length > 20) message = 'Минимум 4 символа, максимум 20';
+    const reg = /^[A-Za-z0-9_]+$/;
+    if (!reg.test(login)) message = 'Только латиница, цифры и нижнее подчеркивание';
+    return message;
+  };
+
+  const emailValidation = (email) => {
+    if (!email) return 'Поле не должно быть пустым';
+    const reg = /^\s*(?!.*[._-]{2})[\w\.-]+@([\w-])+\.+[\w-]{2,24}\s*$/;
+    if (!reg.test(email)) return 'Должен быть корректный формат email';
+    return true;
+  };
+
+  const messageValiduation = (message) => {
+    if (!message) return 'Поле не должно быть пустым';
+  };
+
   return (
     <div style={{ width: '80%', margin: '50px auto 646px' }}>
       <div>
@@ -29,9 +72,14 @@ function ContactsPage() {
           <li>emailexample@email.com</li>
         </ul>
         <div style={{ display: 'flex', gap: '79px' }}>
-          <form style={{ display: 'flex', flexDirection: 'column', gap: '39px', width: '50%' }}>
+          <form
+            onSubmit={handleSubmit(postMessage)}
+            style={{ display: 'flex', flexDirection: 'column', gap: '39px', width: '50%' }}>
             <div style={{ display: 'flex', gap: '39px' }}>
               <input
+                {...register('email', {
+                  validate: emailValidation,
+                })}
                 style={{
                   padding: '25px',
                   backgroundColor: '#FAFAFA',
@@ -43,10 +91,14 @@ function ContactsPage() {
                   lineHeight: '81%',
                   fontWeight: '400',
                 }}
-                type="text"
+                type="email"
                 placeholder="Ваш email"
               />
+
               <input
+                {...register('username', {
+                  validate: loginValidation,
+                })}
                 style={{
                   padding: '25px',
                   backgroundColor: '#FAFAFA',
@@ -63,6 +115,7 @@ function ContactsPage() {
               />
             </div>
             <textarea
+              {...register('text', { validate: messageValiduation })}
               style={{
                 padding: '28px 21px 48px',
                 backgroundColor: '#FAFAFA',
@@ -73,9 +126,10 @@ function ContactsPage() {
                 lineHeight: '81%',
                 fontWeight: '400',
               }}
-              name=""
-              id=""
               placeholder="Введите сообщение"></textarea>
+            {errors.email && <span>{errors.email.message}</span>}
+            {errors.username && <span>{errors.username.message}</span>}
+            {errors.text && <span>{errors.text.message}</span>}
             <input
               style={{
                 backgroundColor: '#090D1A',

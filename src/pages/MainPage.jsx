@@ -37,7 +37,7 @@ function MainPage() {
               gap: '24px',
               marginBottom: '172px',
             }}>
-            {products.map((prod) => {
+            {products?.map((prod) => {
               const isNotAvalible = cardData.some(
                 (item) => Number(item.productId) === Number(prod.id),
               );
