@@ -93,9 +93,17 @@ function ContactsPage() {
           <div className="contact-links-box">
             <span>Найдите нас:</span>
             <div className="img-box">
-              <img src={snapchat} alt="snapchatSvg" />
-              <img src={facebook_color} alt="facebook_colorSvg" />
-              <img src={x} alt="xSvg" />
+              <a href="">
+                <img src={snapchat} alt="snapchatSvg" />
+              </a>
+              <a href="">
+                {' '}
+                <img src={facebook_color} alt="facebook_colorSvg" />
+              </a>
+              <a href="">
+                {' '}
+                <img src={x} alt="xSvg" />
+              </a>
             </div>
           </div>
         </div>
